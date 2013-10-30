@@ -1,0 +1,46 @@
+﻿@model StudentGoal.Models.Goal
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Goal</legend>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+    <div class="display-label">
+        <h3>Skills</h3>
+    </div>
+    <table>  
+    @foreach (var item in Model.skills) {
+        <tr>
+            <td>
+                Name:
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                Description:
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+        </tr>
+    }
+    </table>
+
+
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Name }) |
+    @Html.ActionLink("Back to Student", "Details","Student", new { id=Model.student.ID },null)
+</p>

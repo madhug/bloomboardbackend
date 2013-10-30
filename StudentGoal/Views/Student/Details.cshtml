@@ -1,0 +1,74 @@
+﻿@model StudentGoal.Models.Student
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Student</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <h4>Goal</h4>
+
+    <table>
+    
+@foreach (var item in Model.goals) {
+    <tr>
+        <td>
+            Name:
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            Description:
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", "Goal", new { id=item.GoalID },null) |
+            @Html.ActionLink("Details", "Details","Goal", new { id=item.GoalID },null) |
+            @Html.ActionLink("Delete", "Delete","Goal", new { id=item.GoalID },null)
+        </td>
+    </tr>
+}
+
+</table>
+
+     <h4>Homework</h4>
+
+    <table>
+    
+@foreach (var item in Model.homeworks) {
+    <tr>
+        <td>
+            Name:
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            Description:
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", "Goal", new { id=item.HWID },null) |
+            @Html.ActionLink("Details", "Details","Goal", new { id=item.HWID },null) |
+            @Html.ActionLink("Delete", "Delete","Goal", new { id=item.HWID },null)
+        </td>
+    </tr>
+}
+
+</table>
+
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Add goal", "Create", "Goal") |
+    @Html.ActionLink("Assign Homework", "Assign") |
+    @Html.ActionLink("Back to List", "Index")
+
+</p>

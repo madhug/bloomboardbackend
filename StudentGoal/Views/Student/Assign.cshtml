@@ -1,0 +1,28 @@
+﻿@model StudentGoal.Models.Student
+
+@{
+    ViewBag.Title = "Assign";
+}
+
+<h2>Assign</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Homeworks</legend>
+
+        @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.Name)
+        
+        @Html.ListBoxFor(model => model.HomeworkAssigned, (MultiSelectList)ViewBag.HomeworkList);
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+
+        @Ajax.ActionLink("Assign", "Assign", Model, new AjaxOptions { HttpMethod = "POST" })
+
+    </fieldset>
+}
