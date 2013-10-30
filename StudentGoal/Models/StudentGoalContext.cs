@@ -28,8 +28,8 @@ namespace StudentGoal.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<StudentGoalContext>());
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<StudentGoalContext, Configuration>());
+            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<StudentGoalContext>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<StudentGoalContext, Configuration>());
             //Database.SetInitializer(new DropCreateDatabaseAlways<QuizContext>());
         }
     }
